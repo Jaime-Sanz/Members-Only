@@ -12,13 +12,13 @@ const validateUserLogin = [
 
     (req, res, next) => {
         const errors = validationResult(req);
-        if(!error.isEmpty()) {
+        if(!errors.isEmpty()) {
             const error = new Error('Validation Error');
             error.status = 400;
             error.errors = errors.array();
             next(error);
         }
-        
+
         next();
     }
 ];
