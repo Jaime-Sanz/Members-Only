@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') %>
+<body>
+    <nav>
+        <h1>Welcome to members only!</h1>
+    </nav>
+    <form action="/login" method="post">
+        <label for="username">Enter your username: </label>
+        <input type="text" id="username" name="username">
+
+        <label for="password">Enter your password: </label>
+        <input type="password" id="password" name="password">
+
+        <button type="submit">Sign Up!</button>
+    </form>
+</body>
+</html>
