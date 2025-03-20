@@ -1,17 +1,15 @@
 import { body, validationResult } from 'express-validator';
 
-const validateUserSignUp = [
-    body('username')
-        .trim()
-        .notEmpty(),
-    body('password')
-        .trim()
-        .notEmpty()
-        .isLength( {min: 3}),
-    body('confirmpassword')
-        .custom((value, { req }) => value === req.body.password)
-        .withMessage('Passwords do not match'),
-
+const validateSecret = [
+    body('secretMessage')
+    .trim()
+    .notEmpty()
+    .custom(value => {
+        if (value !== "dogwater") {
+            throw new Error('Thats not the right word!');
+        }
+        return true;
+    }),
     (req, res, next) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
@@ -20,9 +18,8 @@ const validateUserSignUp = [
             error.errors = errors.array();
             return next(error);
         }
-
         next();
     }
 ];
 
-export default validateUserSignUp;
+export default validateSecret;

@@ -5,6 +5,7 @@ import path from 'path';
 import {fileURLToPath} from 'url';
 import passport from './src/config/passport.js';
 import routes from './src/routes/routes.js';
+import setLocals from './src/middlewares/setLocals.js';
 
 dotenv.config()
 
@@ -22,6 +23,8 @@ app.use(express.static('public'));
 app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(setLocals);
 
 app.use("/", routes);
 

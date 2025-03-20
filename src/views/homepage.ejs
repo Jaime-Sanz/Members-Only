@@ -3,7 +3,38 @@
 <%- include('partials/header') %>
 <body>
     <nav>
-        <h1>Welcome to members only HomePage!</h1>
+        <% if (user) { %>
+        <h1>Welcome to members only <%-user.username %></h1>
+        <div>
+            <form action="/logout" method="POST">
+                <button type="submit">Logout</button>
+            </form>
+            <% if (user && !user.is_member) { %>
+                <form action="/secret" method="POST">
+                    <label for="secretMessage">Shhhh this is a secret!!!</label>
+                    <input type="text" name="secretMessage" id="secretMessage">
+                    <button>Submit Secret</button>
+                </form>
+            <% } %>
+            <a href="/create-message">Create New Message</a>
+        </div>
+        <% } else { %>
+        <h1>Welcome to members only</h1>
+        <a href="/login">Login</a>
+        <% } %>
     </nav>
+    <div>
+        <ul id="message-container">
+            <% messages.forEach(message => { %> 
+                <li>
+                    <% if (user && user.member_status) { %>
+                        <div><%- user.username %></div>
+                        <div><%- message.timestamp %></div>
+                    <% } %>
+                    <div><%- message.text %></div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 </html>

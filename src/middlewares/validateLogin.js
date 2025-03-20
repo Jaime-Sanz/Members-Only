@@ -16,7 +16,7 @@ const validateUserLogin = [
             const error = new Error('Validation Error');
             error.status = 400;
             error.errors = errors.array();
-            next(error);
+            return next(error);
         }
 
         next();

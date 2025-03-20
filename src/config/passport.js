@@ -6,7 +6,7 @@ import pool from './pool.js';
 passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
-        const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
+        const { rows } = await pool.query("SELECT id, username, password, is_member FROM users WHERE username = $1", [username]);
         const user = rows[0];
 
         if(!user) {
@@ -19,7 +19,13 @@ passport.use(
             return done(null, false, { message: 'Incorrect password'});
         }
 
-        return done(null, user);
+        const sanitizedUser = {
+          id: user.id,
+          username: user.username,
+          is_member: user.is_member
+        }
+
+        return done(null, sanitizedUser);
       } catch(err) {
         return done(err);
       }
