@@ -20,7 +20,7 @@ export const getCreateMessage = (req, res) => {
 export const postCreateMessage = asyncHandler( async (req, res) => {
     const { post } = req.body;
 
-    await pool.query('INSERT INTO messages (text) VALUES $1', [post]);
+    await pool.query('INSERT INTO messages (text) VALUES ($1)', [post]);
     
     res.redirect('/');
 });

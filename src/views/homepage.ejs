@@ -27,7 +27,7 @@
         <ul id="message-container">
             <% messages.forEach(message => { %> 
                 <li>
-                    <% if (user && user.member_status) { %>
+                    <% if (user && !user.member_status) { %>
                         <div><%- user.username %></div>
                         <div><%- message.timestamp %></div>
                     <% } %>
