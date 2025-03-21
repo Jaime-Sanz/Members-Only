@@ -3,19 +3,25 @@
 <%- include('partials/header') %>
 <body>
     <nav>
-        <h1>Welcome to members only!</h1>
+        <h1 class="homepage-message">Please Enter The Required Information To Sign Up!</h1>
+        <a href="/" class="nav-buttons">Return Home</a>
     </nav>
-    <form action="/sign-up" method="post">
-        <label for="username">Enter a username: </label>
-        <input type="text" id="username" name="username">
-
-        <label for="password">Enter a password: </label>
-        <input type="password" id="password" name="password">
-
-        <label for="confirmpassword">Enter password again: </label>
-        <input type="password" id="confirmpassword" name="confirmpassword">
-
-        <button type="submit">Sign Up!</button>
-    </form>
+    <div id="sign-up-form-container">
+        <form action="/sign-up" method="post" id="sign-up-form">
+            <div>
+                <label for="username">Enter a username: </label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">Enter a password: </label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div>
+                <label for="confirmpassword">Enter password again: </label>
+                <input type="password" id="confirmpassword" name="confirmpassword">
+            </div>
+            <button type="submit" class="nav-buttons">Sign Up!</button>
+        </form>
+    </div>
 </body>
 </html>

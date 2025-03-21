@@ -3,7 +3,7 @@ import pool from "../config/pool.js";
 import bcrypt from "bcryptjs";
 
 export const getHomePage = asyncHandler(async (req, res) => {
-    const { rows } = await pool.query('SELECT * FROM messages ORDER BY timestamp DESC');
+    const { rows } = await pool.query("SELECT messages.id, messages.text, users.username, TO_CHAR(messages.timestamp, 'MM/DD/YYYY HH12:MI AM') AS timestamp FROM messages JOIN users ON messages.user_id = users.id ORDER BY timestamp DESC");
     
 
     res.render('homepage', {messages: rows });
@@ -19,8 +19,9 @@ export const getCreateMessage = (req, res) => {
 
 export const postCreateMessage = asyncHandler( async (req, res) => {
     const { post } = req.body;
+    const { id } = req.user;
 
-    await pool.query('INSERT INTO messages (text) VALUES ($1)', [post]);
+    await pool.query('INSERT INTO messages (text, user_id) VALUES ($1, $2)', [post, id]);
     
     res.redirect('/');
 });

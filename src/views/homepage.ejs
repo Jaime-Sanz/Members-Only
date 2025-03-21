@@ -4,34 +4,46 @@
 <body>
     <nav>
         <% if (user) { %>
-        <h1>Welcome to members only <%-user.username %></h1>
-        <div>
-            <form action="/logout" method="POST">
-                <button type="submit">Logout</button>
-            </form>
+        <h1 class="homepage-message">Welcome Back <%=user.username %>!</h1>
+        <div class="nav-button-container">
             <% if (user && !user.is_member) { %>
                 <form action="/secret" method="POST">
-                    <label for="secretMessage">Shhhh this is a secret!!!</label>
+                    <label for="secretMessage" id="label-secretMessage">SHHH THIS IS A SECRET!!!</label>
                     <input type="text" name="secretMessage" id="secretMessage">
-                    <button>Submit Secret</button>
+                    <button class="nav-buttons">Submit Secret</button>
                 </form>
             <% } %>
-            <a href="/create-message">Create New Message</a>
+            <a href="/create-message" class="nav-buttons">Create New Message</a>
+            <form action="/logout" method="POST">
+                <button type="submit" class="nav-buttons">Logout</button>
+            </form>
         </div>
         <% } else { %>
-        <h1>Welcome to members only</h1>
-        <a href="/login">Login</a>
+        <h1 class="homepage-message">Members Only!</h1>
+        <div class="nav-button-container">
+            <a href="/login" class="nav-buttons">Login</a>
+            <a href="/sign-up" class="nav-buttons">Sign-Up</a>
+        </div>
         <% } %>
     </nav>
     <div>
         <ul id="message-container">
+            <h2>MESSAGES</h2>
             <% messages.forEach(message => { %> 
-                <li>
-                    <% if (user && !user.member_status) { %>
-                        <div><%- user.username %></div>
-                        <div><%- message.timestamp %></div>
-                    <% } %>
+                <li class="message-container">
                     <div><%- message.text %></div>
+                    <% if (user && !user.is_member) { %>
+                        <div class="secret-data-container">
+                            <div>Posted By: *[Hidden]*</div>
+                            <div>Posted on Date: *[Hidden]*</div>
+                        </div>
+                    <% } %>
+                    <% if (user && user.is_member) { %>
+                        <div class="secret-data-container">
+                            <div>Posted By: <%= message.username %></div>
+                            <div>Posted on Date: <%= message.timestamp %></div>
+                        </div>
+                    <% } %>
                 </li>
             <% }) %>
         </ul>

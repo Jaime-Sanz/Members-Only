@@ -3,16 +3,21 @@
 <%- include('partials/header') %>
 <body>
     <nav>
-        <h1>Welcome to members only!</h1>
+        <h1 class="homepage-message">Please Enter Your Login Information!</h1>
+        <a href="/" class="nav-buttons">Return Home</a>
     </nav>
-    <form action="/login" method="post">
-        <label for="username">Enter your username: </label>
-        <input type="text" id="username" name="username">
-
-        <label for="password">Enter your password: </label>
-        <input type="password" id="password" name="password">
-
-        <button type="submit">Login!</button>
-    </form>
+    <div >
+        <form action="/login" method="post" id="login-form">
+            <div>
+                <label for="username">Enter your username: </label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">Enter your password: </label>
+                <input type="password" id="password" name="password">
+            </div>
+            <button type="submit" class="nav-buttons">Login!</button>
+        </form>
+    </div>
 </body>
 </html>

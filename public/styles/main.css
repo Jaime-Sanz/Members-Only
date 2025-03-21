@@ -1,0 +1,161 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #EEE5E5;
+}
+
+nav {
+    display: flex;
+    width: auto;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #37392E;
+    color: #EEE5E5;
+    border-bottom: 2px solid black;
+}
+
+#label-secretMessage {
+    color: #EEE5E5;
+}
+
+#secretMessage {
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 5px;
+    outline: none;
+    background-color: #DDCECD;
+    color: #37392E;
+}
+
+.nav-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-button-container form {
+    display: inline-block;
+}
+
+.nav-button-container button, 
+.nav-button-container a {
+    white-space: nowrap;
+}
+
+.homepage-message {
+    margin: 15px;
+}
+
+.nav-buttons {
+    color: #EEE5E5;
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 5px;
+    background-color: #19647E;
+    margin: 5px;
+}
+
+.nav-buttons:hover {
+    background-color: #28AFB0;
+}
+
+#message-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+    height: 100vh;
+    margin: 15px;
+    color: #37392E;
+}
+
+.message-container {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: #DDCECD;
+    width: 600px;
+    height: auto;
+    padding: 20px;
+    margin: 10px;
+}
+
+.secret-data-container {
+    display: flex;
+    flex-direction: column;
+    font-size: .8rem;
+    align-items: flex-end;
+}
+
+#create-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    gap: 1rem;
+    color: #37392E;
+}
+
+#post {
+    outline: none;
+    background-color: #DDCECD;
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 400px;
+    height: 150px;
+    resize: none;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    gap: .4rem;
+    color: #37392E;
+}
+
+#username {
+     outline: none;
+     background-color: #DDCECD;
+     border: 2px solid black;
+}
+
+#password {
+    outline: none;
+    background-color: #DDCECD;
+    border: 2px solid black;
+}
+
+#confirmpassword {
+    outline: none;
+    background-color: #DDCECD;
+    border: 2px solid black;
+}
+
+#sign-up-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+#sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px;
+    gap: .4rem;
+    color: #37392E;
+}
+
+#sign-up-form button {
+    align-self: center;
+}
