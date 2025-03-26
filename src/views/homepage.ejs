@@ -9,7 +9,7 @@
             <% if (user && !user.is_member) { %>
                 <form action="/secret" method="POST">
                     <label for="secretMessage" id="label-secretMessage">SHHH THIS IS A SECRET!!!</label>
-                    <input type="text" name="secretMessage" id="secretMessage">
+                    <input type="text" name="secretMessage" id="secretMessage" required>
                     <button class="nav-buttons">Submit Secret</button>
                 </form>
             <% } %>

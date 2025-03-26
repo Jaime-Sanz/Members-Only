@@ -30,7 +30,7 @@ app.use("/", routes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ message: 'Internal Server Error!' });
+    res.status(err.status || 500).render('error', { message: err.message});
 });
 
 app.listen(process.env.PORT || 3000, () => {
