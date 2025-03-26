@@ -9,7 +9,7 @@ For those who would like to run the application and/or edit its source code on t
 A simple members message board where only users that have entered the secret message can view who and when the post was created, following The Odin Project.
 
 # Learning Focus
-The main focus of this project was to gain experience in database usage along with form handling and validation.
+The main focus of this project was to gain experience in database usage along with form handling, validation and authentication.
 
 # Preview
 | Homepage views based on membership|
